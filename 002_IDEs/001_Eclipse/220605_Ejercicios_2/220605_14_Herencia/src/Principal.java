@@ -8,7 +8,7 @@ public class Principal {
 		System.out.println(madero1.toString());
 		Persona persona0=new Persona(34896414,"Manuel","Bouzas","Nuñez",LocalDate.of(2011, 12, 10));
 		System.out.println(persona0.toString());
-		Persona persona1=(Persona)madero1;
+		Persona persona1=(Persona)madero1;//No se pierden datos???????
 		System.out.println(persona1.toString());
 	}
 
