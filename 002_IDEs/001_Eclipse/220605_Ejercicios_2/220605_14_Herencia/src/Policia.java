@@ -1,37 +1,26 @@
 import java.time.LocalDate;
-
 public class Policia extends Persona  {
 	private String comisaria;
 	private int distrito;
 	private final static int NOMINA=2200; 
-	
-	
-	
-	
-	
 	
 	Policia(int dni, String nombre, String apellido1, String apellido2, LocalDate fNac,String comisaria,int distrito) {
 		super(dni, nombre, apellido1, apellido2, fNac);
 		this.comisaria=comisaria;
 		this.distrito=distrito;
 	}
-
 	public String getComisaria() {
 		return comisaria;
 	}
-
 	public void setComisaria(String comisaria) {
 		this.comisaria = comisaria;
 	}
-
 	public int getDistrito() {
 		return distrito;
 	}
-
 	public void setDistrito(int distrito) {
 		this.distrito = distrito;
 	}
-
 	public static int getNomina() {
 		return NOMINA;
 	}
@@ -47,6 +36,4 @@ public class Policia extends Persona  {
 		return txt;
 		
 	}
-	
-
 }
