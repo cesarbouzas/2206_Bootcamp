@@ -1,4 +1,3 @@
-
 public class Control_remoto {
 	private final static int VOL_MAX=5;
 	private final static int NCH_MAX=10;
@@ -91,7 +90,6 @@ public class Control_remoto {
 		r1.bajarCanal();
 		r1.bajarVolumen();	
 	}
-
-	}
+}
 
 }
