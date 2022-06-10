@@ -1,60 +1,45 @@
 
 package Ejercicio_36;
 
+import tools.*;
+
 public class HiloRunnable implements Runnable{
+	
 
 
-	
-	private String nombre;
-	public HiloRunnable(String nom) {
-		this.nombre=nom;
+public void run() {
+		
+	for(int i=0;i<4;i++) {
+		Hilo.imprimir(this);
+		if(i%2==0) {
+			try {
+				long milAle=(Hilo.miliAle(5, 10));
+				System.out.println("El hilo "+Thread.currentThread().getName() +
+						" por ser salida par  duerme :"+milAle/1000+" sg.");
+				Thread.currentThread().sleep(milAle);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
 	}
-	public String getName() {
-		return nombre;
-	}
-	public String toString() {
-		String txt="***********"+Thread.currentThread().getName()+"***********\n";
-			  txt+="La prioridad es de :"+Thread.currentThread().getPriority()+"\n";
-			  txt+="Su estado es :"+Thread.currentThread().getState()+"\n";
-			  txt+="************************************\n";
-			  return txt;
-		
-	}
-	
-	@Override
-	public void run() {
-		
-		
-		try {
-				for(int i=0;i<5;i++) {
-					
-					Thread.sleep(HiloExtends.sgRandom(1,4));
-					System.out.println(Thread.currentThread());
-				}
-		}catch (InterruptedException e) {
-					e.printStackTrace();
-		}		
-	System.out.println("Final de "+Thread.currentThread().getName());
-	}
-	
-	
-	
-	public static void main(String[] args) throws InterruptedException {
-		
-		 Thread hiloPrincipal=Thread.currentThread();
-		 Thread.sleep(HiloExtends.sgRandom(1, 4));
-		 System.out.println(hiloPrincipal);
-		 Thread hilo1=new Thread(new HiloRunnable("hilo1"));
-		
+
+}	
+public static void main(String args[]) {
+		Thread principal=Thread.currentThread();
+		principal.setName("Principal");
+		Hilo.imprimir(principal);
+		Thread hilo1=new Thread(new HiloRunnable(),"1");
+		Hilo.imprimir(hilo1);
 		hilo1.start();
+		Hilo.imprimir(principal);
 	
-		
-		
-		
-		
-		
-		
-		
-	}
+	
+}
 
 }
+		
+		
+	
+
+

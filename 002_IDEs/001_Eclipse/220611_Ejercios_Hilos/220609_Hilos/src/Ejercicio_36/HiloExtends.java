@@ -1,56 +1,60 @@
+
 package Ejercicio_36;
 
+import  tools.*;
+
 public class HiloExtends extends Thread {
+
+HiloExtends(String nombre){
+	super(nombre);
+}	
 	
+public void run() {
 	
-	public HiloExtends(String nom){
-		super(nom);
-	}
-	public HiloExtends(Thread hilo,String name) {
-		super(hilo,name);
-	}
-	public static long sgRandom(int min , int max) {
-		long sg=Math.round(Math.random()*(max-min));
-		System.out.println("A dormir el "+Thread.currentThread().getName()+" "+ sg+" Segundos\n");
-		return (sg*1000);
-	}
-	
-	public String toString() {
-		String txt="***********"+getName()+"***********\n";
-			  txt+="La prioridad es de :"+getPriority()+"\n";
-			  txt+="Su estado es :"+getState()+"\n";
-			  txt+="************************************\n";
-			  return txt;
-		
-	}
-	
-	public void run() {
-		
-		try {
-			for(int i=0 ;i<3;i++) {
-				Thread.sleep(sgRandom(1, 5));
-				System.out.println(this);
+	for(int i=0;i<4;i++) {
+		Hilo.imprimir(this);
+		if(i%2==0) {
+			try {
+				long milAle=(Hilo.miliAle(5, 10));
+				System.out.println("El hilo "+getName()+" por ser salida par duerme :"+milAle/1000+" sg.");
+				this.sleep(milAle);
+			} catch (InterruptedException e) {
 				
-				}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+				e.printStackTrace();
+			}
 		}
-		System.out.println("Hilo :"+this.getName()+" ha terminado./n");
 	}
-public static void main(String[] args) throws InterruptedException {
-		
-	HiloExtends principal=new HiloExtends(Thread.currentThread(),"principal");
-	HiloExtends h1=new HiloExtends("Hilo1");
-	h1.start();
-	//principal.join();
-	principal.sleep(HiloExtends.sgRandom(1,5));
-	System.out.println(principal);
-	principal.sleep(HiloExtends.sgRandom(1,1));
-	System.out.println(principal);
-	principal.join();
-	System.out.println(principal);
-	
-	
 }
 
-}
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		
+		
+		Thread principal=Thread.currentThread();
+		principal.setName("Principal");
+		HiloExtends hilo1=new HiloExtends("Hilo1");
+		
+		Hilo.imprimir(principal);
+		
+		long milAle=Hilo.miliAle(5, 10);
+		System.out.println("El hilo "+principal.getName()+" duerme :"+milAle/1000+" sg.");
+		
+		principal.sleep(milAle);
+		
+		Hilo.imprimir(principal);
+		Hilo.imprimir(hilo1);
+		hilo1.start();
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}	
+	
