@@ -1,6 +1,7 @@
 package Ejercicio_40;
 import java.util.ArrayList;
-public class Distribuidor implements Runnable {
+import java.util.Objects;
+public class Distribuidor {
 	
 	private String nombre;
 	private int tamano;
@@ -15,17 +16,20 @@ public class Distribuidor implements Runnable {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
+	public int getTamano() {
+		return this.tamano;
+	}
 	public void recibirCoche(Coche c) {
 		if(tamano>almacen.size()) {	
 			almacen.add(c);
 		}else {
-			System.out.println("Almacen del distribuidor"+this.getNombre() + "lleno");
+			System.out.println("Almacen del distribuidor"+this.getNombre() + " esta lleno");
 		}
 		
 	}
 	public Coche venderCoche(Coche c) {
 		if(isStock(c)){
+				System.out.println("Vendido el coche "+c);
 				return this.sacarCocheAlmacen(c);
 				
 		}else{
@@ -35,8 +39,15 @@ public class Distribuidor implements Runnable {
 	}
 	
 	public boolean isStock (Coche c) {
-		return almacen.contains(c);
-	}
+		for(Coche calm:this.almacen) {
+			if(Objects.equals(calm.toString(), c.toString())) {
+				return true;
+			}else {
+				return false; 
+			}
+		}
+		return false;
+		}
 	private Coche sacarCocheAlmacen(Coche c) {
 		Coche cocheBuscado;
 		if(almacen.contains(c)) {
