@@ -9,22 +9,32 @@ public class Futuro extends Thread{
 	
 	
 public void run() {
-	System.out.println(frases[(int)Math.random()*frases.length]);		
+	f.notify();
+	System.out.println(frases[(int)(Math.random()*frases.length)]);
+	
+		
+		
 	}
 	
 	
 	
-public static void main (String[] args) {
+	
+public static void main (String[] args) throws Exception {
 Timer t=new Timer();
 Futuro f=new Futuro();
+f.start();
+
 
 TimerTask tarea=new TimerTask(){
 	public void run() {
-		f.start();
-		f.
+f.wait();
+
+		
+	
+		
 	}
 };
-t.schedule(tarea,2000,5000);
+t.schedule(tarea,2000,1000);
 
 }
 }

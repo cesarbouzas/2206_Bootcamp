@@ -1,5 +1,7 @@
 package Ejercicio_40;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 public class Fabricante extends Thread {
 	
 	private String marca;
@@ -13,7 +15,7 @@ public class Fabricante extends Thread {
 		
 	}
 	public void setModelos() {
-		this.modelos.add("Ibiza");
+		this.modelos.add("Ibiza"); 
 		this.modelos.add("malaga");
 		this.modelos.add("Toledo");
 		this.modelos.add("Turquia");
@@ -27,21 +29,30 @@ public class Fabricante extends Thread {
 	public String getMarca() {
 		return this.marca;
 	}
-	
-	
-	
-	
-	
+	public Coche fabricarCoche() {
+		int numAleatorio=(int)(Math.random()*modelos.size());
+		//System.out.println(numAleatorio);
+		return new Coche(this.getMarca(),this.getModelo(numAleatorio));
+		
+	}
+	Timer t=new Timer();
 	public void run() {
+	
+		TimerTask tarea=new TimerTask() {
+			public void run() {
+				distribuidor.recibirCoche(fabricarCoche());
+			}
+		};
+			t.schedule(tarea,0,2000);
 			
-		for(int i=1;i<this.distribuidor.getTamano()+4;i++) {
-			Coche cocheNuevo=new Coche(this.getMarca(),this.getModelo(i%6));
-			distribuidor.recibirCoche(cocheNuevo);
-			System.out.println("Enviando coche"+cocheNuevo+" a "+ this.distribuidor.getNombre());
 		}
+		
+		
+		
+	
 		
 		
 	}
 	
 	
-}
+

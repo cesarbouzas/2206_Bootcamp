@@ -1,6 +1,8 @@
 package Ejercicio_40;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 public class Distribuidor {
 	
 	private String nombre;
@@ -9,7 +11,7 @@ public class Distribuidor {
 	
 	Distribuidor(String nombre,int tamano){
 		this.nombre=nombre;
-		this.tamano=tamano;	
+		this.tamano=tamano;	 
 	}
 	
 	
@@ -19,58 +21,79 @@ public class Distribuidor {
 	public int getTamano() {
 		return this.tamano;
 	}
-	public void recibirCoche(Coche c) {
+	public synchronized void  recibirCoche(Coche c)  {
+	
 		if(tamano>almacen.size()) {	
 			almacen.add(c);
+			System.out.println("Recibido coche"+c+" a "+ this.getNombre());
+			System.out.println(this);
+			
 		}else {
 			System.out.println("Almacen del distribuidor"+this.getNombre() + " esta lleno");
 		}
+		this.notify();
+		
+		
 		
 	}
-	public Coche venderCoche(Coche c) {
+	public synchronized Coche venderCoche(Coche c) {
+//		try {
+//			this.wait();
+//		} catch (InterruptedException e1) {
+//			
+//			e1.printStackTrace();
+//		}
+		
 		if(isStock(c)){
 				System.out.println("Vendido el coche "+c);
+				System.out.println(this);
 				return this.sacarCocheAlmacen(c);
 				
 		}else{
 			System.out.println("Sin stock");
+		
 			return null;
 		}
+		
 	}
 	
 	public boolean isStock (Coche c) {
-		for(Coche calm:this.almacen) {
-			if(Objects.equals(calm.toString(), c.toString())) {
-				return true;
-			}else {
-				return false; 
+		for(Coche cocheAlmacen:this.almacen) {
+			if (cocheAlmacen.equals(c)) {
+				return true;	
 			}
-		}
+			}
 		return false;
 		}
 	private Coche sacarCocheAlmacen(Coche c) {
-		Coche cocheBuscado;
-		if(almacen.contains(c)) {
-				int pos=almacen.indexOf(c);
-				cocheBuscado=almacen.get(pos);
-				almacen.remove(pos);
-				return cocheBuscado;
-		}else {
-			return null;
-		}
+		Coche aux=new Coche("tututu","tututu");
+		for (int i=0;i<=0;i++) {
+			if(this.almacen.get(i).equals(c)) {
+				aux=this.almacen.get(i);
+				System.out.println("Borrado"+almacen.get(i));
+				this.almacen.remove(i);
+				}
+			}
+		return aux;
 	}
+		
 	public String toString(){
-		String txt="";
+		String txt="*****El estado del Almacen es*****\n";
 		for(int i=0;i<almacen.size();i++) {
 			txt+="Coche ["+(i+1)+"]="+almacen.get(i)+".\n";
 		}
 	return txt;
 	}
-	
-
-	public void run() {
-		
-		
+	Timer t=new Timer();
+public void run() {
+			
+				TimerTask tarea=new TimerTask(){
+					public void run() {
+					System.out.println("El distribuidor descarta por falta de venta elimina el coche lleva mas timepo");
+					almacen.remove(0);
+					};
+				};
+				t.schedule(tarea,5000,5000);
+				
 	}
-
 }
