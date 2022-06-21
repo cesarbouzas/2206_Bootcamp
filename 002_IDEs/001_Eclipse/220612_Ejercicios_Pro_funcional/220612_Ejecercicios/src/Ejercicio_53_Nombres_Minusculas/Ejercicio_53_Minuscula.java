@@ -18,7 +18,7 @@ public class Ejercicio_53_Minuscula {
 			s=s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase();
 			return s;
 		})
-		.peek(System.out::println)
+//		.peek(System.out::println)
 		.collect(Collectors.toList());
 		
 		

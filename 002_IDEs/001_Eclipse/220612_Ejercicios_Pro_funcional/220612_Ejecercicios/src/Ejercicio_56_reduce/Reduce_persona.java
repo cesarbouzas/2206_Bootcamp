@@ -9,16 +9,15 @@ public class Reduce_persona {
 	
 	public static void main(String args[]) {
 	
-		Stream<String> nombresPersona=Stream.of("cesar","natividad","pedro","manuel","cesar","pedro","mateo" , "meteo");
-		nombresPersona
+		Stream<String> nombresPersona=Stream.of("cesar","natividad","pedro","manuel","cesar","pedro","mateo" , "mateo");
+		String texto=nombresPersona
 		.distinct()
-		.reduce((s,a)->{
-		s=a.substring(0).toUpperCase()+a.substring(1);
-		return a;});
-		
-		
-		List<String> resultado=nombresPersona.collect(Collectors.toList());
-		System.out.println(resultado);
+		.reduce("",(s,a)->{
+		s+=a.substring(0,1).toUpperCase()+a.substring(1);
+		s+="--->Longitud de :"+a.length()+"\n";
+		return s;})
+		;
+		System.out.println(texto);
 
 		
 	}
