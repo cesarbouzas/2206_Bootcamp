@@ -1,4 +1,4 @@
-package Ejercico57_Sumar_valores;
+package Ejercicio_57_Sumar_valores;
 import java.util.List;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
