@@ -1,22 +1,19 @@
 package principal;
-import clases_Objeto.Coche;
-
+import clases_Objeto.*;
 public class Principal {
 
 	public static void main(String[] args) {
-	
-		Coche c1=new Coche("Nissan","Xtrial");
-		for(int i=0;i<=180;i++) {
-		
-			c1.decidirAcelerarFrenar();
-			if(i%1==0||i==0) {
-				
-				System.out.print("\n"+c1.getTacometro()+"m ,"+c1.getVelocidad()+" km/h");
-				}else {
-				System.out.print(c1.getTacometro()+",");}
-		}
-		
-		System.out.println( "media de :"+(60.0/180.0)*(c1.getTacometro()/1000)+" km/h");
+//		Garaje j1=new Garaje("Hermanos Purriños");
+//		Garaje j2=new Garaje(".net racing");
+//		Garaje j3=new Garaje("ontimize gaMonkey");
+//		Coche c1=new Coche("Nissan","Xtrial");
+//		
+//		j1.anadirCoche(c1);
+//		c1.correr(180);
+//		
+//		System.out.println( "media de :"+(60.0/180.0)*(c1.getTacometro()/1000)+" km/h");
 
+		
+		Menu.principal();
 }
 }
