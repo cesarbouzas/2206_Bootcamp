@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.ontimize.jee.server.dao.common.ConfigurationFile;
 import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 
-@Repository("ExperienceDao")
+@Repository("StatusDao")
 @Lazy
 @ConfigurationFile(configurationFile = "dao/ProfileDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class StatusDao extends OntimizeJdbcDaoSupport {
