@@ -6,11 +6,11 @@
  catalog="" schema="${mainschema}" table="CANDIDATE"
  datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
  <DeleteKeys>
-  <Column>ID</Column>
+  <Column>id</Column>
  </DeleteKeys>
  <UpdateKeys>
-  <Column>ID</Column>
+  <Column>id</Column>
  </UpdateKeys>
- <GeneratedKey>ID</GeneratedKey>
+ <GeneratedKey>id</GeneratedKey>
 </JdbcEntitySetup>
 
