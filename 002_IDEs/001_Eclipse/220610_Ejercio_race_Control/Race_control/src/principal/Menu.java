@@ -1,5 +1,7 @@
 package principal;
 
+
+
 import java.util.Scanner;
 
 import clases_Objeto.Coche;
@@ -14,6 +16,7 @@ public abstract class Menu {
 		String txt="******************Menu Principal****************";
 		txt+="\n 1) Menu Garaje.";
 		txt+="\n 2) Menu Coche.";
+		txt+="\n 3) Carrera.";
 		txt+="\n 0) Salir.";
 		txt+="\n Introduce una opcion :";
 		System.out.println(txt);
@@ -24,7 +27,11 @@ public abstract class Menu {
 			Menu.garaje();
 			break;
 		case 2:
+			
 			Menu.coche();
+			
+			System.out.println("introduce valor válido");
+			
 			break;
 		default:
 			System.out.println("opcion no válidas");
@@ -33,7 +40,7 @@ public abstract class Menu {
 	}while(op!=0);
 	}
 
-	public static void  garaje() {
+	public static void  garaje()  {
 		int op=0;
 		int ngaraje;
 		do {
@@ -48,24 +55,47 @@ public abstract class Menu {
 			txt+="\n Introduce una opcion :";
 			System.out.println(txt);
 			op=Teclado.leerInt();
-		
 		switch (op) {
 			case 1:
 				Garaje.crear();
 			break;
 			case 2:
+				if(Garajes.numeroDeGarajes()!=0) {
 				System.out.println(Garajes.getLista());
-			break;
+				break;
+				}else {
+					System.out.println("Introduce Garajes... ");
+				break;
+				}
+			
 			case 3:
+				
+				System.out.println(Garajes.getLista());
 				System.out.println("Introduce nº garaje para ver los coches :");
 				ngaraje=Teclado.leerInt();
-				Garajes.getGaraje(ngaraje).toString();
-				break;
-			case 4:
-				System.out.println("Introduce nº garaje a Borrar :");
+				while(ngaraje+1>Garajes.numeroDeGarajes()){ 
+				System.out.println("Introduce nº garaje para ver los coches :");
 				ngaraje=Teclado.leerInt();
+				}
+				if(Garajes.getGaraje(ngaraje).cantidadCoches()!=0) {
 				Garajes.getGaraje(ngaraje).toString();
-				break;
+				}else {
+					System.out.println("Garaje Vacio.....Introduce coches");
+					break;
+				}
+			case 4:
+				if(Garajes.numeroDeGarajes()!=0) {
+				System.out.println(Garajes.getLista());
+					ngaraje=Teclado.leerInt();
+					while(ngaraje+1>Garajes.numeroDeGarajes()) {
+					System.out.println("Introduce nº garaje para borrar :");
+					ngaraje=Teclado.leerInt();
+					}
+					System.out.println("Garaje "+Garajes.getGaraje(ngaraje)+" borrado");
+					Garajes.removeGaraje(ngaraje);
+				}else {
+					System.out.println("Introduce Garajes... ");
+				}
 				
 			case 5:
 				Menu.principal();
@@ -98,27 +128,16 @@ public abstract class Menu {
 			case 2:
 				System.out.print("Garajes existentes");
 				System.out.println(Garajes.getLista());
-				do {
-				System.out.println("Introduce numero de Garaje :");
-				 nGaraje=Teclado.leerInt();
-				}while(nGaraje+1<Garajes.getLista().length());
-				System.out.println(Garajes.getGaraje(nGaraje));
+				System.out.println(Garajes.elegirGaraje());
+				break;
 				
 			case 3:
 				System.out.print("Garajes existentes");
 				System.out.println(Garajes.getLista());
-				do {
-				System.out.println("Introduce numero de Garaje :");
-				nGaraje=Teclado.leerInt();
-				}while(nGaraje<Garajes.getLista().length());
-				System.out.print("Los coches existentes");
-				Garajes.getGaraje(nGaraje);
-				do {
-				System.out.println("Introduce numero de coche a borrar :");
-				nCoche=Teclado.leerInt();
-				}while(nCoche<Garajes.getGaraje(nGaraje).cantidadCoches());
-				Garajes.getGaraje(nGaraje).borrarCoche(nCoche);
-				System.out.println(Garajes.getGaraje(nGaraje));
+				Garaje g=(Garajes.elegirGaraje());
+				System.out.println(g);
+				Garajes.elegirCocheGarajes(g));
+				break;
 			case 4:
 			Menu.principal();
 			break;
@@ -126,6 +145,44 @@ public abstract class Menu {
 		}
 		}while(op!=0);
 		}
+
+	
+public static void carrera(){
+	int op;
+	do {
+		String txt="******************Carrera****************";
+		txt+="\n 1) Entreno";
+		//txt+="\n 2) Menu Coche.";
+		//txt+="\n 3) Carrera.";
+		//txt+="\n 0) Salir.";
+		txt+="\n Introduce una opcion :";
+		System.out.println(txt);
+		op=Teclado.leerInt();
+	
+	switch (op) {
+		case 1:
+			System.out.println("Elige un coche");
+			Menu.garaje();
+			break;
+		case 2:
+			
+			Menu.coche();
+			
+			System.out.println("introduce valor válido");
+			
+			break;
+		default:
+			System.out.println("opcion no válidas");
+			break;
+	}
+	}while(op!=0);
+	}
+	
+	
+	
+	
+	
+	
 	
 	}
 		

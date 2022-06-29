@@ -6,7 +6,7 @@ import principal.Teclado;
 
 public class Garaje {
 	private String nombre;
-	ArrayList<Coche> cochesGaraje=new ArrayList<>();
+	private ArrayList<Coche> cochesGaraje=new ArrayList<>();
 	
 	Garaje(String nombre){
 		this.nombre=nombre;
@@ -23,7 +23,7 @@ public class Garaje {
 			System.out.println("Error al añadir el garaje "+g.nombre +" nombre");
 		}
 	}
-
+ 
 	public void anadirCoche(Coche c) {
 		this.cochesGaraje.add(c);
 		c.setGaraje(this.nombre);
@@ -46,15 +46,26 @@ public class Garaje {
 	
 public String getNombre() {
 	return this.nombre;
-}	
+}
+public Coche getCoche(int i) {
+	return this.cochesGaraje.get(i);
+	
+}
 	
 public String toString() {
-	String txt=this.nombre+"-> ";
+	int i=0;
+	String txt="["+i+"]"+this.nombre+"-> ";
 		for(Coche c:this.cochesGaraje) {
 			txt+=(c.getMarcaModelo()+",");
 		}
 		return txt;
 }
+
+
+
+
+
+
 public boolean compareTo(Garaje g) {
 	return (this.nombre.equalsIgnoreCase(g.nombre));
 	}
