@@ -40,20 +40,35 @@ public class Coche  {
 		txt+=" Distacia (m) :"+this.getTacometro()+"\n";
 		return txt;
 	}
-	public static void crearCocheTeclado() {
-	String marca;String modelo;
-	System.out.print("Introduce marca :");
-		marca=Teclado.leerString();System.out.println();
-	System.out.print("Introduce modelo :");
-		modelo=Teclado.leerString();System.out.println();
-	Coche c=new Coche(marca,modelo);
-	System.out.println("\n++++++++Introduce el garaje para añadairlo de los disponible++++\n"+Garajes.getLista());
-	int nGaraje=Teclado.leerInt();
-	Garaje g= Garajes.getGaraje(nGaraje);
-	g.anadirCoche(c);
+	
+	private static String[] leerCoche() {
+		String[]txt=new String[2];
+		System.out.print("Introduce marca :");
+			txt[0]=Teclado.leerString();
+		System.out.print("Introduce modelo :");
+			txt[1]=Teclado.leerString();System.out.println();
+		return txt;
 	}
 	
+	public static void crearCocheTeclado() {
+		if(Garajes.numeroDeGarajes()!=0) {
+			System.out.print("Introduce marca :");
+			String marca=Teclado.leerString();
+			System.out.print("Introduce modelo :");
+			String modelo=Teclado.leerString();
+			Coche c=new Coche(marca,modelo);
+			int nGaraje;
+				do {
+					System.out.println("Introduce nº garaje :"+Garajes.getLista());
+					nGaraje=Teclado.leerInt();
+				}while(nGaraje+1<Garajes.numeroDeGarajes());
+					Garaje g= Garajes.getGaraje(nGaraje);
+					g.anadirCoche(c);
+	}else {
+		System.out.println("Añade garaje primero");
+	}
 	
+	}
 	
 	public void setTacometro() {
 		this.tacometro=this.getTacometro()+Math.round(this.velocidad*1000*(1.0/60.0));

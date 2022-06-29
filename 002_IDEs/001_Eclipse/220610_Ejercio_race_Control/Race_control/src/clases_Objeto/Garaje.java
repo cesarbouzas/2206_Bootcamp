@@ -13,9 +13,7 @@ public class Garaje {
 	}
 	
 	public static void crear() {
-		
-		System.out.print("\nIntroduce nombre Garaje :");
-
+		System.out.println("Introduce nombre Garaje :");
 		String nombre=Teclado.leerString();
 		Garaje g=new Garaje(nombre);
 		if(Garajes.isGaraje(g)==false) {
@@ -31,6 +29,19 @@ public class Garaje {
 		c.setGaraje(this.nombre);
 		System.out.println("El coche "+c.getMarcaModelo()+" pertenece al garaje "+c.getGaraje());
 	}
+	public void borrarCoche(int n) {
+		if(this.cochesGaraje.size()>n) {
+			Coche c=this.cochesGaraje.get(n);
+			this.cochesGaraje.remove(n);
+			System.out.println("Coche "+c+" Borrado de el garaje"+this.getNombre());
+		}else {
+			System.out.println("coche no encontrado");
+		}
+		
+	}
+	public int cantidadCoches() {
+		return this.cochesGaraje.size();
+	}
 	
 	
 public String getNombre() {
@@ -39,12 +50,12 @@ public String getNombre() {
 	
 public String toString() {
 	String txt=this.nombre+"-> ";
-	for(Coche c:this.cochesGaraje) {
-		txt+=(c.getMarcaModelo()+",");
-	}
-	return txt;
+		for(Coche c:this.cochesGaraje) {
+			txt+=(c.getMarcaModelo()+",");
+		}
+		return txt;
 }
 public boolean compareTo(Garaje g) {
 	return (this.nombre.equalsIgnoreCase(g.nombre));
-}
+	}
 }
