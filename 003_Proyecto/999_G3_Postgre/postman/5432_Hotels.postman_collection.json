@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "56422976-2281-421b-b5fa-523d3cec82dc",
+		"name": "5432_Hotels",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "-C Hotel",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"htl_name\": \"Atom 234\",\r\n        \"htl_street\": \"Plaza de España 1\",\r\n        \"htl_city\": \"Vigo\",\r\n        \"htl_postal_code\": \"36201\",\r\n        \"htl_state\": \"Galicia\",\r\n        \"htl_country\": \"España\",\r\n        \"htl_phone\": \"987 654 321\",\r\n        \"htl_email\": \"hi@atom01.com\",\r\n        \"htl_description\": \"Nuevo hotel de lujo.\",\r\n        \"htl_is_open\": 1\r\n    }\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/hotels/hotel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"hotels",
+						"hotel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-R all hotels",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:33333/hotels/hotel?columns=htl_id,htl_name,htl_city,htl_postal_code,htl_state,htl_country,htl_phone,htl_email,htl_description,htl_is_open",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"hotels",
+						"hotel"
+					],
+					"query": [
+						{
+							"key": "columns",
+							"value": "htl_id,htl_name,htl_city,htl_postal_code,htl_state,htl_country,htl_phone,htl_email,htl_description,htl_is_open"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-R hotel",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {\r\n    \"htl_id\": 3\r\n},\r\n    \"columns\": [\r\n        \"htl_name\",\r\n        \"htl_street\",\r\n        \"htl_city\",\r\n        \"htl_postal_code\",\r\n        \"htl_state\",\r\n        \"htl_country\",\r\n        \"htl_phone\",\r\n        \"htl_email\",\r\n        \"htl_description\",\r\n        \"htl_is_open\"]\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/hotels/hotel/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"hotels",
+						"hotel",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-R all hotels",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"columns\":[\"htl_id\",\"htl_name\",\"htl_city\"]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/hotels/hotel/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"hotels",
+						"hotel",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-U Hotel",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\":{\r\n        \"htl_id\":1\r\n    },\r\n    \"data\":{\r\n        \"htl_name\":\"cesar_hotel\",\r\n        \"htl_street\":\"Ernesto che \",\r\n        \"htl_city\":\"coruna\",\r\n        \"htl_postal_code\":\"15179\",\r\n        \"htl_state\":\"Galicia\",\r\n        \"htl_country\":\"spain\",\r\n        \"htl_phone\":\"667880938\",\r\n        \"htl_email\":\"ccesar@fff\",\r\n        \"htl_description\":\"un hotel mas como otro\",\r\n        \"htl_is_open\":1\r\n    }\r\n\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/hotels/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"hotels",
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-D hotel",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {\r\n    \"htl_id\": 14\r\n}\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/hotels/hotel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"hotels",
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

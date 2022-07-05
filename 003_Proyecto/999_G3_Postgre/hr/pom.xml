@@ -39,7 +39,7 @@
   
   
   
-  <artifactId>hr2</artifactId>
+  <artifactId>hr</artifactId>
         	
   
   
@@ -74,12 +74,12 @@
     
     
     
-
+    <hsqldatabase.path>src/main/db</hsqldatabase.path>
                 		
     
     
     
-    <database.url>jdbc:postgresql:://45.84.210.174:65432/Backend_2022_G3</database.url>
+    <database.url>jdbc:postgrssql://localhost:5432/Backednd_2023_G3_Local</database.url>
                 		
     
     
@@ -240,12 +240,12 @@
         
         
         
-        <artifactId>postgresql</artifactId>
+        <artifactId>postgres</artifactId>
                                 				
         
         
         
-        <version>${postgresql.version}</version>
+        <version>42.2.25</version>
                                 			
       
       
