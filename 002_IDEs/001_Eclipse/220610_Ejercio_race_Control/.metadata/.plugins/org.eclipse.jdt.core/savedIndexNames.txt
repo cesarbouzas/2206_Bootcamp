@@ -1,4 +1,2 @@
 INDEX VERSION 1.131+C:\Users\Usuario\Desktop\html_public\2206_Bootcamp\002_IDEs\001_Eclipse\220610_Ejercio_race_Control\.metadata\.plugins\org.eclipse.jdt.core
 1865797976.index
-231419044.index
-1991655398.index
