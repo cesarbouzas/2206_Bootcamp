@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Redenominar el paquete  «princial» como «principal»&#x0D;&#x0A;- Proyecto original: «Race_control»&#x0D;&#x0A;- Elemento original: «Race_control/src/princial»&#x0D;&#x0A;- Elemento redenominado: «Race_control/src/principal»&#x0D;&#x0A;- Actualizar referencias a elemento refactorizado&#x0D;&#x0A;- Actualizar apariciones textuales en comentarios y cadenas de texto" description="Redenominar paquete &apos;princial&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;princial" name="principal" qualified="false" references="true" stamp="1656100219896" textual="false" version="1.0"/>
+</session>

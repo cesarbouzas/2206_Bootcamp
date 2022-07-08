@@ -1,0 +1,9 @@
+
+‚	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(È±ÆƒRMINORZ
+CODE_SMELL
+S
+java:S1110H"!Remove these useless parentheses.(ûçç08¯¨ý»™0HàRMAJORZ
+CODE_SMELL
+[
+java:S2140H")Use "java.util.Random.nextInt()" instead.(ûçç08Â…Á»™0H›RMINORZ
+CODE_SMELL

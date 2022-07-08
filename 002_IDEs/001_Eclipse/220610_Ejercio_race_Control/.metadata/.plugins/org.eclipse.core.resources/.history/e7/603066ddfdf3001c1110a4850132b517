@@ -1,0 +1,13 @@
+package principal;
+import Coche;
+
+public class principal {
+
+	public static void main(String[] args) {
+	
+		Coche c1=new Coche("Nissan","xtrial");
+		
+
+	}
+
+}
