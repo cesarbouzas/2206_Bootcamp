@@ -121,8 +121,6 @@ public abstract class Menu {
 		int nCoche;
 		switch (op) {
 			case 1:
-				System.out.print("Garajes existentes");
-				System.out.println(Garajes.getLista());
 				Coche.crearCocheTeclado();				
 			break;
 			case 2:
@@ -136,7 +134,7 @@ public abstract class Menu {
 				System.out.println(Garajes.getLista());
 				Garaje g=(Garajes.elegirGaraje());
 				System.out.println(g);
-				Garajes.elegirCocheGarajes(g));
+				Garajes.elegirCocheGarajes(g);
 				break;
 			case 4:
 			Menu.principal();

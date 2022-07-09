@@ -25,9 +25,14 @@ public class Garaje {
 	}
  
 	public void anadirCoche(Coche c) {
+		
+		if(!this.contineCoche(c)) {
 		this.cochesGaraje.add(c);
 		c.setGaraje(this.nombre);
 		System.out.println("El coche "+c.getMarcaModelo()+" pertenece al garaje "+c.getGaraje());
+		}else {
+			System.out.println(c+" ya existe");
+		}
 	}
 	public void borrarCoche(int n) {
 		if(this.cochesGaraje.size()>n) {
@@ -61,11 +66,14 @@ public String toString() {
 		return txt;
 }
 
-
-
-
-
-
+public boolean contineCoche(Coche c) {
+	for(int i=0;i<this.cantidadCoches();i++) {
+		if(this.cochesGaraje.get(i).getMarcaModelo().equals(c.getMarcaModelo())) {
+		return true;
+		}
+	}
+	return false;
+}
 public boolean compareTo(Garaje g) {
 	return (this.nombre.equalsIgnoreCase(g.nombre));
 	}

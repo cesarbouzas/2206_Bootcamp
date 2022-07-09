@@ -52,18 +52,20 @@ public class Coche  {
 	
 	public static void crearCocheTeclado() {
 		if(Garajes.numeroDeGarajes()!=0) {
-			System.out.print("Introduce marca :");
-			String marca=Teclado.leerString();
-			System.out.print("Introduce modelo :");
-			String modelo=Teclado.leerString();
-			Coche c=new Coche(marca,modelo);
 			int nGaraje;
 				do {
-					System.out.println("Introduce nº garaje :"+Garajes.getLista());
+					System.out.println("Garajes exixtentes"+ Garajes.getLista());
+					System.out.println("Introduce nº garaje :");
 					nGaraje=Teclado.leerInt();
-				}while(nGaraje+1<Garajes.numeroDeGarajes());
-					Garaje g= Garajes.getGaraje(nGaraje);
-					g.anadirCoche(c);
+				}while(nGaraje+1>Garajes.numeroDeGarajes());
+				System.out.print("Introduce marca :");
+				String marca=Teclado.leerString();
+				System.out.print("Introduce modelo :");
+				String modelo=Teclado.leerString();
+				Coche c=new Coche(marca,modelo);	
+				Garaje g= Garajes.getGaraje(nGaraje);
+				g.anadirCoche(c);
+					
 	}else {
 		System.out.println("Añade garaje primero");
 	}
