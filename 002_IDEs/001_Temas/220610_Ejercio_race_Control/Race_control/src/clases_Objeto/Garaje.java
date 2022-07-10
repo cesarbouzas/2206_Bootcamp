@@ -2,7 +2,8 @@ package clases_Objeto;
 
 import java.util.ArrayList;
 
-import principal.Teclado;
+import Servicios.GarajesService;
+import Servicios.TecladoService;
 
 public class Garaje {
 	private String nombre;
@@ -14,10 +15,10 @@ public class Garaje {
 	
 	public static void crear() {
 		System.out.println("Introduce nombre Garaje :");
-		String nombre=Teclado.leerString();
+		String nombre=TecladoService.leerString();
 		Garaje g=new Garaje(nombre);
-		if(Garajes.isGaraje(g)==false) {
-			Garajes.addGaraje(g);
+		if(GarajesService.isGaraje(g)==false) {
+			GarajesService.addGaraje(g);
 			System.out.println("Garaje "+nombre+" añadido correctamnete");
 		}else {
 			System.out.println("Error al añadir el garaje "+g.nombre +" nombre");
@@ -38,7 +39,7 @@ public class Garaje {
 		int nCoche;
 			do {
 			System.out.println("Introduce numero de coche:");
-			nCoche=Teclado.leerInt();
+			nCoche=TecladoService.leerInt();
 			}while(nCoche>this.cantidadCoches());
 			return this.getCoche(nCoche);
 		}
@@ -78,6 +79,7 @@ public String toString() {
 		}
 		return txt;
 }
+
 
 public boolean contineCoche(Coche c) {
 	for(int i=0;i<this.cantidadCoches();i++) {

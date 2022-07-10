@@ -1,6 +1,6 @@
-package principal;
+package Servicios;
 
-public abstract class Pantalla {
+public abstract class PantallaService {
 	 public static void borrar() {
 	
 	for(int i=0;i<90;i++) {

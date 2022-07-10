@@ -1,11 +1,10 @@
-package principal;
+package Servicios;
 
 
 import clases_Objeto.Coche;
 import clases_Objeto.Garaje;
-import clases_Objeto.Garajes;
 
-public abstract class Menu {
+public abstract class MenuService {
 	
 	public static void principal(){
 	int op=0;
@@ -17,15 +16,15 @@ public abstract class Menu {
 		txt+="\n 0) Salir.";
 		txt+="\n Introduce una opcion :";
 		System.out.println(txt);
-		op=Teclado.leerInt();
+		op=TecladoService.leerInt();
 	
 	switch (op) {
 		case 1:
-			Menu.garaje();
+			MenuService.garaje();
 			break;
 		case 2:
 			
-			Menu.coche();
+			MenuService.coche();
 			
 			System.out.println("introduce valor válido");
 			
@@ -41,7 +40,7 @@ public abstract class Menu {
 		int op=0;
 		int ngaraje;
 		do {
-			Pantalla.borrar();
+			PantallaService.borrar();
 			String txt="******************Menu Garaje****************";
 			txt+="\n 1) Crear Garaje.";
 			txt+="\n 2) Listar Garajes.";
@@ -51,14 +50,14 @@ public abstract class Menu {
 			txt+="\n 0) Salir.";
 			txt+="\n Introduce una opcion :";
 			System.out.println(txt);
-			op=Teclado.leerInt();
+			op=TecladoService.leerInt();
 		switch (op) {
 			case 1:
 				Garaje.crear();
 			break;
 			case 2:
-				if(Garajes.numeroDeGarajes()!=0) {
-				System.out.println(Garajes.getLista());
+				if(GarajesService.numeroDeGarajes()!=0) {
+				System.out.println(GarajesService.getLista());
 				break;
 				}else {
 					System.out.println("Introduce Garajes... ");
@@ -67,35 +66,35 @@ public abstract class Menu {
 			
 			case 3:
 				
-				System.out.println(Garajes.getLista());
+				System.out.println(GarajesService.getLista());
 				System.out.println("Introduce nº garaje para ver los coches :");
-				ngaraje=Teclado.leerInt();
-				while(ngaraje+1>Garajes.numeroDeGarajes()){ 
+				ngaraje=TecladoService.leerInt();
+				while(ngaraje+1>GarajesService.numeroDeGarajes()){ 
 				System.out.println("Introduce nº garaje para ver los coches :");
-				ngaraje=Teclado.leerInt();
+				ngaraje=TecladoService.leerInt();
 				}
-				if(Garajes.getGaraje(ngaraje).cantidadCoches()!=0) {
-				Garajes.getGaraje(ngaraje).toString();
+				if(GarajesService.getGaraje(ngaraje).cantidadCoches()!=0) {
+				GarajesService.getGaraje(ngaraje).toString();
 				}else {
 					System.out.println("Garaje Vacio.....Introduce coches");
 					break;
 				}
 			case 4:
-				if(Garajes.numeroDeGarajes()!=0) {
-				System.out.println(Garajes.getLista());
-					ngaraje=Teclado.leerInt();
-					while(ngaraje+1>Garajes.numeroDeGarajes()) {
+				if(GarajesService.numeroDeGarajes()!=0) {
+				System.out.println(GarajesService.getLista());
+					ngaraje=TecladoService.leerInt();
+					while(ngaraje+1>GarajesService.numeroDeGarajes()) {
 					System.out.println("Introduce nº garaje para borrar :");
-					ngaraje=Teclado.leerInt();
+					ngaraje=TecladoService.leerInt();
 					}
-					System.out.println("Garaje "+Garajes.getGaraje(ngaraje)+" borrado");
-					Garajes.removeGaraje(ngaraje);
+					System.out.println("Garaje "+GarajesService.getGaraje(ngaraje)+" borrado");
+					GarajesService.removeGaraje(ngaraje);
 				}else {
 					System.out.println("Introduce Garajes... ");
 				}
 				
 			case 5:
-				Menu.principal();
+				MenuService.principal();
 				break;
 		}
 		}while(op!=0);
@@ -103,7 +102,7 @@ public abstract class Menu {
 	public static void coche(){
 		int op=0;
 		do {
-			Pantalla.borrar();
+			PantallaService.borrar();
 			String txt="******************Menu Coche****************";
 			txt+="\n 1) Crear coche por garaje.";
 			txt+="\n 2) Ver coches por garaje.";
@@ -112,26 +111,26 @@ public abstract class Menu {
 			txt+="\n 0) Salir.";
 			txt+="\n Introduce una opcion :";
 			System.out.println(txt);
-			op=Teclado.leerInt();
+			op=TecladoService.leerInt();
 		switch (op) {
 			case 1:
 				Coche.crearCocheTeclado();				
 			break;
 			
 			case 2:	
-				Garaje g=Garajes.elegirGaraje();
+				Garaje g=GarajesService.elegirGaraje();
 				System.out.println(g);
 				break;
 				
 			case 3:
-				Garaje g1=Garajes.elegirGaraje();
+				Garaje g1=GarajesService.elegirGaraje();
 				System.out.println(g1);
 				Coche c=g1.elegirCoche();
 				g1.borrarCoche(c);
 				
 				break;
 			case 4:
-			Menu.principal();
+			MenuService.principal();
 			break;
 				
 		}
@@ -149,16 +148,16 @@ public static void carrera(){
 		//txt+="\n 0) Salir.";
 		txt+="\n Introduce una opcion :";
 		System.out.println(txt);
-		op=Teclado.leerInt();
+		op=TecladoService.leerInt();
 	
 	switch (op) {
 		case 1:
 			System.out.println("Elige un coche");
-			Menu.garaje();
+			MenuService.garaje();
 			break;
 		case 2:
 			
-			Menu.coche();
+			MenuService.coche();
 			
 			System.out.println("introduce valor válido");
 			

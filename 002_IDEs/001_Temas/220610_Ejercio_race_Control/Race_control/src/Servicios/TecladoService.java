@@ -1,8 +1,8 @@
-package principal;
+package Servicios;
 
 import java.util.Scanner;
 
-public abstract class Teclado {
+public abstract class TecladoService {
 	public static  int leerInt() {
 		return new Scanner(System.in).nextInt();
 	}

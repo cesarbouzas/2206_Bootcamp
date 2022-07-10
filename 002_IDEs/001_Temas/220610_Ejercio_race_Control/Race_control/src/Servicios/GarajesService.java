@@ -1,11 +1,11 @@
-package clases_Objeto;
+package Servicios;
 
 import java.util.ArrayList;
 
-import principal.Teclado;
+import clases_Objeto.Garaje;
 
 
-public abstract class Garajes {
+public abstract class GarajesService {
 
 private static ArrayList<Garaje> listaGarajes=new ArrayList<>();
 		
@@ -47,8 +47,8 @@ int nGaraje;
 	System.out.println(getLista());
 	do {
 		System.out.println("Introduce numero de Garaje :");
-		nGaraje=Teclado.leerInt();
-	}while(nGaraje+1>Garajes.getLista().length());
-	return Garajes.getGaraje(nGaraje);
+		nGaraje=TecladoService.leerInt();
+	}while(nGaraje+1>GarajesService.getLista().length());
+	return GarajesService.getGaraje(nGaraje);
 
 }}

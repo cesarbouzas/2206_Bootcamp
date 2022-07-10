@@ -1,7 +1,8 @@
 package clases_Objeto;
 
 
-import principal.Teclado;
+import Servicios.GarajesService;
+import Servicios.TecladoService;
 
 public class Coche  {
 	private static final int VEL_MAX=110;
@@ -41,19 +42,19 @@ public class Coche  {
 
 	
 	public static void crearCocheTeclado() {
-		if(Garajes.numeroDeGarajes()!=0) {
+		if(GarajesService.numeroDeGarajes()!=0) {
 			int nGaraje;
 				do {
-					System.out.println("Garajes exixtentes"+ Garajes.getLista());
+					System.out.println("Garajes exixtentes"+ GarajesService.getLista());
 					System.out.println("Introduce nº garaje :");
-					nGaraje=Teclado.leerInt();
-				}while(nGaraje+1>Garajes.numeroDeGarajes());
+					nGaraje=TecladoService.leerInt();
+				}while(nGaraje+1>GarajesService.numeroDeGarajes());
 				System.out.print("Introduce marca :");
-				String marca=Teclado.leerString();
+				String marca=TecladoService.leerString();
 				System.out.print("Introduce modelo :");
-				String modelo=Teclado.leerString();
+				String modelo=TecladoService.leerString();
 				Coche c=new Coche(marca,modelo);	
-				Garaje g= Garajes.getGaraje(nGaraje);
+				Garaje g= GarajesService.getGaraje(nGaraje);
 				g.anadirCoche(c);
 					
 	}else {
