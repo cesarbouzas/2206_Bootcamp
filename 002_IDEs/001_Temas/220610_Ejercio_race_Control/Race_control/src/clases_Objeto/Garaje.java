@@ -29,16 +29,27 @@ public class Garaje {
 		if(!this.contineCoche(c)) {
 		this.cochesGaraje.add(c);
 		c.setGaraje(this.nombre);
-		System.out.println("El coche "+c.getMarcaModelo()+" pertenece al garaje "+c.getGaraje());
+		System.out.println("El coche "+c.getMarcaModelo()+" añadido al garaje "+c.getGaraje());
 		}else {
-			System.out.println(c+" ya existe");
+			System.out.println("\n"+c.getMarcaModelo()+" ya existe");
 		}
 	}
-	public void borrarCoche(int n) {
-		if(this.cochesGaraje.size()>n) {
-			Coche c=this.cochesGaraje.get(n);
-			this.cochesGaraje.remove(n);
-			System.out.println("Coche "+c+" Borrado de el garaje"+this.getNombre());
+	public  Coche elegirCoche() {
+		int nCoche;
+			do {
+			System.out.println("Introduce numero de coche:");
+			nCoche=Teclado.leerInt();
+			}while(nCoche>this.cantidadCoches());
+			return this.getCoche(nCoche);
+		}
+
+	
+	
+	
+	public void borrarCoche(Coche c) {
+		if(this.contineCoche(c)) {
+			this.cochesGaraje.remove(c);
+			System.out.println("Coche "+c.getMarcaModelo()+" Borrado de el garaje "+this.getNombre());
 		}else {
 			System.out.println("coche no encontrado");
 		}
@@ -59,16 +70,18 @@ public Coche getCoche(int i) {
 	
 public String toString() {
 	int i=0;
-	String txt="["+i+"]"+this.nombre+"-> ";
+	String txt=this.nombre+"-> ";
 		for(Coche c:this.cochesGaraje) {
+			txt+="["+i+"]";
 			txt+=(c.getMarcaModelo()+",");
+			i++;
 		}
 		return txt;
 }
 
 public boolean contineCoche(Coche c) {
 	for(int i=0;i<this.cantidadCoches();i++) {
-		if(this.cochesGaraje.get(i).getMarcaModelo().equals(c.getMarcaModelo())) {
+		if(this.cochesGaraje.get(i).equals(c)) {
 		return true;
 		}
 	}

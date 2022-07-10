@@ -22,7 +22,7 @@ public class Coche  {
 		return this.velocidad;
 	}
 	public String getMarcaModelo() {
-		return this.marca+"\t"+this.modelo;
+		return this.marca+" "+this.modelo;
 	}
 	
 	public double getTacometro() {
@@ -32,23 +32,13 @@ public class Coche  {
 	public String getGaraje() {
 		return this.garaje;
 	}
-	@Override
-	public String toString() {
-		String txt="";
-		txt+="Marca ="+this.marca +" Modelo ="+this.modelo;
-		txt+="\n Velocidad :"+this.velocidad;
-		txt+=" Distacia (m) :"+this.getTacometro()+"\n";
-		return txt;
-	}
 	
-	private static String[] leerCoche() {
-		String[]txt=new String[2];
-		System.out.print("Introduce marca :");
-			txt[0]=Teclado.leerString();
-		System.out.print("Introduce modelo :");
-			txt[1]=Teclado.leerString();System.out.println();
-		return txt;
-	}
+
+	
+	
+
+	
+
 	
 	public static void crearCocheTeclado() {
 		if(Garajes.numeroDeGarajes()!=0) {
@@ -130,4 +120,28 @@ public class Coche  {
 			}
 		}
 	}
+	@Override
+	public String toString() {
+		String txt="";
+		txt+=this.hashCode();
+		txt+="Marca ="+this.marca +" Modelo ="+this.modelo;
+		txt+="\n Velocidad :"+this.velocidad;
+		txt+=" Distacia (m) :"+this.getTacometro()+"\n";
+		return txt;
+	
+	}
+	
+	
+	public boolean equals(Coche c) {
+	if(this.hashCode()==c.hashCode()) {
+		System.out.println("El hascode :"+this.modelo+
+			this.hashCode()+" es el mismo que el de "+c.modelo+":"+c.hashCode());
+		return true;
+	}
+	if(this.getMarcaModelo().equalsIgnoreCase(c.getMarcaModelo())) {
+		return true;
+	};
+	return false;
+	}
+	
 }

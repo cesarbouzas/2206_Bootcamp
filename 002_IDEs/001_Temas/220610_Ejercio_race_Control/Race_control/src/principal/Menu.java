@@ -1,9 +1,6 @@
 package principal;
 
 
-
-import java.util.Scanner;
-
 import clases_Objeto.Coche;
 import clases_Objeto.Garaje;
 import clases_Objeto.Garajes;
@@ -65,7 +62,7 @@ public abstract class Menu {
 				break;
 				}else {
 					System.out.println("Introduce Garajes... ");
-				break;
+					break;
 				}
 			
 			case 3:
@@ -116,25 +113,22 @@ public abstract class Menu {
 			txt+="\n Introduce una opcion :";
 			System.out.println(txt);
 			op=Teclado.leerInt();
-		
-		int nGaraje;
-		int nCoche;
 		switch (op) {
 			case 1:
 				Coche.crearCocheTeclado();				
 			break;
-			case 2:
-				System.out.print("Garajes existentes");
-				System.out.println(Garajes.getLista());
-				System.out.println(Garajes.elegirGaraje());
+			
+			case 2:	
+				Garaje g=Garajes.elegirGaraje();
+				System.out.println(g);
 				break;
 				
 			case 3:
-				System.out.print("Garajes existentes");
-				System.out.println(Garajes.getLista());
-				Garaje g=(Garajes.elegirGaraje());
-				System.out.println(g);
-				Garajes.elegirCocheGarajes(g);
+				Garaje g1=Garajes.elegirGaraje();
+				System.out.println(g1);
+				Coche c=g1.elegirCoche();
+				g1.borrarCoche(c);
+				
 				break;
 			case 4:
 			Menu.principal();

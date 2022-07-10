@@ -44,19 +44,11 @@ public static int numeroDeGarajes() {
 }
 public static Garaje elegirGaraje() {
 int nGaraje;
+	System.out.println(getLista());
 	do {
 		System.out.println("Introduce numero de Garaje :");
 		nGaraje=Teclado.leerInt();
 	}while(nGaraje+1>Garajes.getLista().length());
 	return Garajes.getGaraje(nGaraje);
 
-}
-public static Coche elegirCocheGarajes(Garaje g) {
-int nCoche;
-	do {
-	System.out.println("Introduce numero de coche a borrar :");
-	nCoche=Teclado.leerInt();
-	}while(nCoche>g.cantidadCoches());
-	return g.getCoche(nCoche);
-}
-}
+}}
