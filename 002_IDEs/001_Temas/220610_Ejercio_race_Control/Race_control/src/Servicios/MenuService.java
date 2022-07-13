@@ -1,6 +1,9 @@
 package Servicios;
 
 
+import java.util.ArrayList;
+
+import clases_Objeto.CarreraEstandar;
 import clases_Objeto.Coche;
 import clases_Objeto.Garaje;
 
@@ -23,12 +26,10 @@ public abstract class MenuService {
 			MenuService.garaje();
 			break;
 		case 2:
-			
-			MenuService.coche();
-			
-			System.out.println("introduce valor válido");
-			
+			MenuService.coche();	
 			break;
+		case 3:
+			MenuService.carrera();
 		default:
 			System.out.println("opcion no válidas");
 			break;
@@ -142,28 +143,60 @@ public static void carrera(){
 	int op;
 	do {
 		String txt="******************Carrera****************";
-		txt+="\n 1) Entreno";
-		//txt+="\n 2) Menu Coche.";
-		//txt+="\n 3) Carrera.";
-		//txt+="\n 0) Salir.";
+		txt+="\n 1) Estandar";
+		txt+="\n 2) Eliminacion.";
+		txt+="\n 3) Torneo.";
+		txt+="\n 4) Menu principal.";
 		txt+="\n Introduce una opcion :";
 		System.out.println(txt);
 		op=TecladoService.leerInt();
 	
 	switch (op) {
+	
 		case 1:
-			System.out.println("Elige un coche");
-			MenuService.garaje();
+
+			MenuService.unoOVarios();
 			break;
 		case 2:
 			
-			MenuService.coche();
-			
-			System.out.println("introduce valor válido");
 			
 			break;
 		default:
 			System.out.println("opcion no válidas");
+			break;
+	}
+	}while(op!=0);
+	}
+public static void unoOVarios(){
+	int op;
+	do {
+		String txt="***************Competicion entre Garajes o Garaje****************";
+		txt+="\n 1) Uno , todos los coches";
+		txt+="\n 2) Varios, un coche por cada garaje.";
+		txt+="\n 3) Menu principal.";
+		txt+="\n Introduce una opcion :";
+		System.out.println(txt);
+		op=TecladoService.leerInt();
+	
+	switch (op) {
+
+	case 1:
+			System.out.println("Nombre Carrera");
+			String nombre=TecladoService.leerString();
+			GarajesService.getLista();
+			System.out.println("Elige un garaje :");
+			int n=TecladoService.leerInt();
+			Garaje g=GarajesService.getGaraje(n);
+			CarreraEstandar c= new CarreraEstandar;
+			
+			break;
+		case 2:		
+			break;
+		case 3:
+			MenuService.principal();
+			break;
+		default:
+	
 			break;
 	}
 	}while(op!=0);
