@@ -51,4 +51,12 @@ int nGaraje;
 	}while(nGaraje+1>GarajesService.getLista().length());
 	return GarajesService.getGaraje(nGaraje);
 
-}}
+}
+public static ArrayList<Garaje> unGaraje(){
+	Garaje garaje=GarajesService.elegirGaraje();
+	ArrayList<Garaje> listaGarajes=new ArrayList<>();
+	listaGarajes.add(garaje);
+	return listaGarajes;
+}
+
+}

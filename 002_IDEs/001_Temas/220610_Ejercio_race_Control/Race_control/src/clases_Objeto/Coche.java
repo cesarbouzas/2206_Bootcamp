@@ -1,10 +1,12 @@
 package clases_Objeto;
 
 
+import java.util.Comparator;
+
 import Servicios.GarajesService;
 import Servicios.TecladoService;
 
-public class Coche  {
+public class Coche implements Comparable<Coche> {
 	private static final int VEL_MAX=110;
 	private static final int ACELERACION=10;
 	
@@ -121,12 +123,17 @@ public class Coche  {
 			}
 		}
 	}
+	public void correrSimple(int minutos) {
+		for(int i=0;i<=minutos;i++) {
+			this.decidirAcelerarFrenar();
+		}
+	}
 	@Override
 	public String toString() {
 		String txt="";
-		txt+=this.hashCode();
+		//txt+=this.hashCode();
 		txt+="Marca ="+this.marca +" Modelo ="+this.modelo;
-		txt+="\n Velocidad :"+this.velocidad;
+		//txt+="\n Velocidad :"+this.velocidad;
 		txt+=" Distacia (m) :"+this.getTacometro()+"\n";
 		return txt;
 	
@@ -144,5 +151,10 @@ public class Coche  {
 	};
 	return false;
 	}
-	
+
+	@Override
+	public int compareTo(Coche o) {
+		return (int) (o.tacometro-this.tacometro);
+		
+	}
 }

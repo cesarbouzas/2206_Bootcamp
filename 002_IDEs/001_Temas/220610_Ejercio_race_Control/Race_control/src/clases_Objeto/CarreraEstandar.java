@@ -9,22 +9,42 @@ public class CarreraEstandar extends Carrera{
 	private  static  int duracion=180;
 
 	
-	public CarreraEstandar(String nombre,ArrayList<Garaje> garajes) {
-		super(nombre,garajes);
+	public CarreraEstandar(ArrayList<Garaje> garajes) {
+		
+		super(garajes);
 	}
-	public CarreraEstandar(String nombre,ArrayList<Garaje> garajes,int duracion) {
-		super(nombre,garajes);
+	public CarreraEstandar(ArrayList<Garaje> garajes,int duracion) {
+		super(garajes);
 		this.duracion=duracion;
 	}
-	public void correrCochesUnGaraje(Coche e) {
-		
+	
+	
+	
+	public void correrCoches() {
 		for(int i=0;i<this.cochesInscritos.size();i++) {
-			cochesInscritos.get(i).correr(CarreraEstandar.duracion);
+			cochesInscritos.get(i).correrSimple(duracion);
 		}
 		
 	}
 	
-	
+	public void entreCochesDeUnGaraje() {
+		System.out.println("****carrera entre cocoches*****");
+		Garaje garaje=this.garajesInscritos.get(0);
+		for(int i=0;i<garaje.cantidadCoches();i++) {
+			this.cochesInscritos.add(garaje.getCoche(i));
+		}
+		this.correrCoches();
+		
+		System.out.println("+++++++carrera terminada+++++++++");
+		for(int j=0;j<this.cochesInscritos.size();j++) {
+			Coche coche=cochesInscritos.get(j);
+			System.out.println(coche.getMarcaModelo()+" "+coche.getTacometro());
+			
+		}
+		Podium p=new Podium(this.cochesInscritos);
+		p.mostrar();
+		
+	}
 	
 
 }
