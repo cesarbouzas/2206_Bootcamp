@@ -14,9 +14,8 @@ public class Carrera {
 	
 	
 	
-	public Carrera(String nombre, ArrayList garajes) {
-		this.nombre=nombre;
-		this.garajesInscritos=garajes;
+	public Carrera(ArrayList<Garaje> garajes) {
+	this.garajesInscritos=garajes;
 	};
 	
 	public String getNombre() {

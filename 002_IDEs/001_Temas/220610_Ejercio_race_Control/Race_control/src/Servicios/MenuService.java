@@ -180,14 +180,9 @@ public static void unoOVarios(){
 	
 	switch (op) {
 
-	case 1:
-			System.out.println("Nombre Carrera");
-			String nombre=TecladoService.leerString();
-			GarajesService.getLista();
-			System.out.println("Elige un garaje :");
-			int n=TecladoService.leerInt();
-			Garaje g=GarajesService.getGaraje(n);
-			CarreraEstandar c= new CarreraEstandar;
+		case 1:
+			CarreraEstandar c1=new CarreraEstandar(GarajesService.unGaraje());
+			c1.entreCochesDeUnGaraje();
 			
 			break;
 		case 2:		
