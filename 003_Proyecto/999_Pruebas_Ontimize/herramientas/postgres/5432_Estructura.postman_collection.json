@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "8bd5efd3-2094-473e-9147-28886f21f0b7",
+		"name": "5432_Estructura",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "-C estructura",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\":{\r\n    \"str_tipo\":\"Paso superior\",\r\n    \"str_nombre\":\"Ps_0+600\",\r\n    \"str_eje\":\"001_Troco Artabra\",\r\n    \"str_ubicacion\":\"0+600\",\r\n    \"str_ancho\":12.36,\r\n    \"str_alto\":11.00\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/estructuras/estructura/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"estructuras",
+						"estructura",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-R all estructuras",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "-R all estructuras",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {\r\n        \"str_id\":1\r\n        },\r\n    \"columns\":[\r\n        \"str_id\",\r\n        \"str_tipo\",\r\n        \"str_nombre\",\r\n        \"str_eje\",\r\n        \"str_ubicacion\",\r\n        \"str_ancho\",\r\n        \"str_alto\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/estructuras/estructura/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"estructuras",
+						"estructura",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-U Estructura nombre",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\":{\r\n        \"str_id\":1\r\n    },\r\n    \"data\": {\r\n        \"str_nombre\":\"Ps_0+600 v4\",\r\n        \"str_ancho\":22\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/estructuras/estructura/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"estructuras",
+						"estructura",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "-D Estructura",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "demouser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {\r\n        \"str_id\":2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:33333/estructuras/estructura/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "33333",
+					"path": [
+						"estructuras",
+						"estructura",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
